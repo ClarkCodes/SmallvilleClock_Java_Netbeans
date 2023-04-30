@@ -1,0 +1,36 @@
+plugins { // Apply the application plugin to add support for building a CLI application in Java.
+    id 'java'
+    id 'jacoco'
+    id 'application'
+}
+
+description = 'Simple Useful Clock'
+version = 'onDevAlpha'
+targetCompatibility = 17
+
+repositories { // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies { // Use JUnit Jupiter for testing.
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'com.formdev:flatlaf:3.1.1'
+    implementation 'com.formdev:flatlaf-extras:3.1.1'
+    implementation 'com.formdev:flatlaf-intellij-themes:3.1.1'
+    implementation 'com.formdev:svgSalamander:1.1.4'
+    implementation 'javazoom:jlayer:1.0.1'
+}
+
+javadoc {
+  title = 'SmallvilleClock ' + version
+}
+
+application { // Define the main class for the application.
+    mainClass = 'dev.clarkcodes.App'
+}
+
+tasks.named('test') { // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+}

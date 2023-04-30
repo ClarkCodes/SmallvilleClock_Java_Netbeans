@@ -1,0 +1,853 @@
+package views;
+
+/* LICENSE
+ * Creative Commons Zero v1.0 Universal
+ * CC0 1.0 Universal
+ * Please check out the license file in this project's root folder.
+ */
+//Imports
+import controllers.*;
+import static controllers.CommonUtils.State.*;
+import data.FilesManager;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.geom.AffineTransform;
+import java.time.Duration;
+import java.time.ZoneId;
+import java.util.Locale;
+import javax.swing.JButton;
+import models.Stopwatch;
+import models.Timer;
+import models.WorldClock;
+
+/** Main app {@code JFrame} window
+ * @author Clark - ClarkCodes
+ * @since 1.0
+ */
+public class FrmSmallvilleClockMain extends javax.swing.JFrame
+{
+    private final CtrlSettings ctrlSettings;
+    private final CtrlSmallvilleClock clocksManager;
+    private final FilesManager filesManager;
+    private final Timer timer;
+    private final Stopwatch stopwatch;
+    private DlgStopwatchLaps stopwatchLapsWindow = null;
+    private final IfrmBigClock bigClockPanel;
+    private final IfrmShortClocksGrid shortClocksPanelGrid;
+    private ClocksView currentClocksView = null;
+    private int selectedTabIndex = 0;
+    private DlgSetTimer setTimerWindow;
+    
+    /** Creates new form FrmSmallvilleClockMain */
+    public FrmSmallvilleClockMain ()
+    {
+        initComponents();
+        ctrlSettings = CtrlSettings.getController();
+        filesManager = FilesManager.getController();
+        clocksManager = CtrlSmallvilleClock.getController();
+        
+        // Preparing and getting main Clocks
+        clocksManager.setSystemWorldClock( new WorldClock( ZoneId.systemDefault() ) );
+        timer = clocksManager.getTimer();
+        stopwatch = clocksManager.getStopwatch();
+        
+        // Setting up Panels
+        bigClockPanel = new IfrmBigClock();
+        shortClocksPanelGrid = new IfrmShortClocksGrid();
+        panelWorldClockTab.add( bigClockPanel );
+        panelWorldClockTab.add( shortClocksPanelGrid );
+        clocksManager.getShortPanels().add( shortClocksPanelGrid.getPanelClock1() );
+        clocksManager.getShortPanels().add( shortClocksPanelGrid.getPanelClock2() );
+        clocksManager.getShortPanels().add( shortClocksPanelGrid.getPanelClock3() );
+        clocksManager.getShortPanels().add( shortClocksPanelGrid.getPanelClock4() );
+        
+        // Calling to the Manager to set up and show the World Clock section properly
+        worldClockSetManager();
+        
+        // Setting up Window Location
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        AffineTransform windowsScale = gd.getDefaultConfiguration().getDefaultTransform();
+        double scaleX = windowsScale.getScaleX();
+        
+        if ( scaleX > 1.0D )
+        {   // The 0.50 and -7 numbers are bacause of the scale factor in Windows, it is added to the scale factor and location when the program runs for some reason
+            setLocation( gd.getDisplayMode().getWidth() - Math.toIntExact( Math.round( ( this.getWidth() * ( scaleX + 0.50 ) ) - 7 ) ), 30 );
+        }
+        else
+        {
+            setLocation( gd.getDisplayMode().getWidth() - this.getWidth(), 36 );
+        }
+
+        // Setting up Timer and Stopwatch labels
+        timer.setTimerLabel( lblTimer ); //This is very important for the Timer and Stopwatch functionality for these ones to show the time on them
+        stopwatch.setStopwatchLapLabel( lblStopwatch, lblLapTime );
+        setAlwaysOnTop( ctrlSettings.isAppOnTop() );
+        
+        // WINDOW ICON
+        this.setIconImage( new javax.swing.ImageIcon(getClass().getResource("/smallville-clock-icon-color.png")).getImage() );
+    }
+
+    public JButton getBtnCheckLaps ()
+    {
+        return btnCheckLaps;
+    }
+
+    public JButton getBtnLapReset ()
+    {
+        return btnLapReset;
+    }
+
+    public JButton getBtnSetTime ()
+    {
+        return btnSetTime;
+    }
+
+    public JButton getBtnStopwatchStartStopResume ()
+    {
+        return btnStopwatchStartStopResume;
+    }
+
+    public JButton getBtnTimerCancel ()
+    {
+        return btnTimerCancel;
+    }
+
+    public JButton getBtnTimerStartPauseResume ()
+    {
+        return btnTimerStartPauseResume;
+    }
+
+    public int getSelectedTabIndex ()
+    {
+        return selectedTabIndex;
+    }
+    /** Gets the {@code IfrmShortClocksGrid} panel object corresponding to the 
+     * Short Clocks Panel Grid
+     * @return The {@code IfrmShortClocksGrid JPanel} object
+     */
+    public IfrmShortClocksGrid getShortClocksPanelGrid ()
+    {
+        return shortClocksPanelGrid;
+    }
+
+    public DlgStopwatchLaps getStopwatchLapsWindow ()
+    {
+        return stopwatchLapsWindow;
+    }
+    
+    private enum ClocksView
+    {
+        BIG_SYSTEM_CLOCK,
+        SHORT_CLOCKS_GRID
+    }
+    
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents()
+    {
+
+        tpMain = new javax.swing.JTabbedPane();
+        panelWorldClockTab = new javax.swing.JPanel();
+        panelTimerTab = new javax.swing.JPanel();
+        btnTimerStartPauseResume = new javax.swing.JButton();
+        btnTimerCancel = new javax.swing.JButton();
+        btnSetTime = new javax.swing.JButton();
+        lblTimer = new javax.swing.JLabel();
+        lblTimerName = new javax.swing.JLabel();
+        panelStopwatchTab = new javax.swing.JPanel();
+        btnStopwatchStartStopResume = new javax.swing.JButton();
+        btnCheckLaps = new javax.swing.JButton();
+        btnLapReset = new javax.swing.JButton();
+        lblStopwatch = new javax.swing.JLabel();
+        lblLapTime = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuOptions = new javax.swing.JMenu();
+        mnuChangeMode = new javax.swing.JMenuItem();
+        mnuOpen = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        mnuSettings = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        mnuClose = new javax.swing.JMenuItem();
+        menuHelp = new javax.swing.JMenu();
+        mnuAttribution = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        mnuAbout = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Smallville Clock");
+        setMaximumSize(new java.awt.Dimension(500, 300));
+        setMinimumSize(new java.awt.Dimension(500, 300));
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
+                formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt)
+            {
+                formWindowOpened(evt);
+            }
+        });
+
+        tpMain.setMaximumSize(new java.awt.Dimension(500, 281));
+        tpMain.setMinimumSize(new java.awt.Dimension(500, 281));
+        tpMain.setPreferredSize(new java.awt.Dimension(500, 281));
+
+        panelWorldClockTab.setMaximumSize(new java.awt.Dimension(500, 300));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/i18nBundle_es"); // NOI18N
+        tpMain.addTab(bundle.getString("key_world_clock"), panelWorldClockTab); // NOI18N
+
+        panelTimerTab.setPreferredSize(new java.awt.Dimension(500, 300));
+        panelTimerTab.setLayout(null);
+
+        btnTimerStartPauseResume.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnTimerStartPauseResume.setText(bundle.getString("key_start")); // NOI18N
+        btnTimerStartPauseResume.setEnabled(false);
+        btnTimerStartPauseResume.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnTimerStartPauseResumeActionPerformed(evt);
+            }
+        });
+        panelTimerTab.add(btnTimerStartPauseResume);
+        btnTimerStartPauseResume.setBounds(10, 196, 235, 40);
+
+        btnTimerCancel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnTimerCancel.setText(bundle.getString("key_cancel")); // NOI18N
+        btnTimerCancel.setEnabled(false);
+        btnTimerCancel.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnTimerCancelActionPerformed(evt);
+            }
+        });
+        panelTimerTab.add(btnTimerCancel);
+        btnTimerCancel.setBounds(255, 196, 235, 40);
+
+        btnSetTime.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnSetTime.setToolTipText(bundle.getString("key_set_timer")); // NOI18N
+        btnSetTime.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnSetTimeActionPerformed(evt);
+            }
+        });
+        panelTimerTab.add(btnSetTime);
+        btnSetTime.setBounds(442, 150, 48, 40);
+
+        lblTimer.setFont(new java.awt.Font("Exo", 0, 72)); // NOI18N
+        lblTimer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTimer.setText("00:00:00");
+        panelTimerTab.add(lblTimer);
+        lblTimer.setBounds(6, 7, 488, 188);
+
+        lblTimerName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblTimerName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTimerName.setText("           ");
+        panelTimerTab.add(lblTimerName);
+        lblTimerName.setBounds(93, 150, 310, 22);
+
+        tpMain.addTab("Temporizador", panelTimerTab);
+
+        panelStopwatchTab.setPreferredSize(new java.awt.Dimension(500, 300));
+        panelStopwatchTab.setLayout(null);
+
+        btnStopwatchStartStopResume.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnStopwatchStartStopResume.setText(bundle.getString("key_start")); // NOI18N
+        btnStopwatchStartStopResume.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnStopwatchStartStopResumeActionPerformed(evt);
+            }
+        });
+        panelStopwatchTab.add(btnStopwatchStartStopResume);
+        btnStopwatchStartStopResume.setBounds(10, 196, 235, 40);
+
+        btnCheckLaps.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnCheckLaps.setToolTipText(bundle.getString("key_check_laps")); // NOI18N
+        btnCheckLaps.setEnabled(false);
+        btnCheckLaps.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnCheckLapsActionPerformed(evt);
+            }
+        });
+        panelStopwatchTab.add(btnCheckLaps);
+        btnCheckLaps.setBounds(442, 150, 48, 40);
+
+        btnLapReset.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnLapReset.setText(bundle.getString("key_lap")); // NOI18N
+        btnLapReset.setEnabled(false);
+        btnLapReset.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnLapResetActionPerformed(evt);
+            }
+        });
+        panelStopwatchTab.add(btnLapReset);
+        btnLapReset.setBounds(255, 196, 235, 40);
+
+        lblStopwatch.setFont(new java.awt.Font("Exo", 0, 72)); // NOI18N
+        lblStopwatch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStopwatch.setText("00:00.00");
+        panelStopwatchTab.add(lblStopwatch);
+        lblStopwatch.setBounds(6, 7, 488, 188);
+
+        lblLapTime.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblLapTime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLapTime.setText("           ");
+        panelStopwatchTab.add(lblLapTime);
+        lblLapTime.setBounds(93, 150, 310, 22);
+
+        tpMain.addTab("Cronometro", panelStopwatchTab);
+
+        menuOptions.setText(bundle.getString("key_options")); // NOI18N
+
+        mnuChangeMode.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnuChangeMode.setText(bundle.getString("key_mini_mode")); // NOI18N
+        mnuChangeMode.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mnuChangeModeActionPerformed(evt);
+            }
+        });
+        menuOptions.add(mnuChangeMode);
+
+        mnuOpen.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnuOpen.setText(bundle.getString("key_open")); // NOI18N
+        mnuOpen.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mnuOpenActionPerformed(evt);
+            }
+        });
+        menuOptions.add(mnuOpen);
+        menuOptions.add(jSeparator2);
+
+        mnuSettings.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnuSettings.setText(bundle.getString("key_settings")); // NOI18N
+        mnuSettings.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mnuSettingsActionPerformed(evt);
+            }
+        });
+        menuOptions.add(mnuSettings);
+        menuOptions.add(jSeparator1);
+
+        mnuClose.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        mnuClose.setText(bundle.getString("key_close")); // NOI18N
+        mnuClose.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mnuCloseActionPerformed(evt);
+            }
+        });
+        menuOptions.add(mnuClose);
+
+        jMenuBar1.add(menuOptions);
+
+        menuHelp.setText(bundle.getString("key_help")); // NOI18N
+
+        mnuAttribution.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnuAttribution.setText(bundle.getString("key_attribution")); // NOI18N
+        mnuAttribution.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mnuAttributionActionPerformed(evt);
+            }
+        });
+        menuHelp.add(mnuAttribution);
+        menuHelp.add(jSeparator3);
+
+        mnuAbout.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnuAbout.setText(bundle.getString("key_about")); // NOI18N
+        mnuAbout.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                mnuAboutActionPerformed(evt);
+            }
+        });
+        menuHelp.add(mnuAbout);
+
+        jMenuBar1.add(menuHelp);
+
+        setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tpMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tpMain, javax.swing.GroupLayout.PREFERRED_SIZE, 277, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
+    {//GEN-HEADEREND:event_formWindowOpened
+        // Setting Menus and Buttons Icons
+        this.mnuChangeMode.setIcon( ctrlSettings.getMiniModeIcon() );
+        this.mnuOpen.setIcon( ctrlSettings.getSourceOpenIcon() );
+        this.mnuSettings.setIcon( ctrlSettings.getSettingsIcon() );
+        this.mnuClose.setIcon( ctrlSettings.getPowerExitIcon() );
+        this.mnuAttribution.setIcon( ctrlSettings.getGroupsAttributionIcon() );
+        this.mnuAbout.setIcon( ctrlSettings.getInfoIcon() );
+        this.btnSetTime.setIcon( ctrlSettings.getTimerIcon() );
+        this.btnCheckLaps.setIcon( ctrlSettings.getCheckLapsIcon() );
+        
+        lblTimer.setText( CommonUtils.getFormattedDuration( timer.getTimeSet(), CommonUtils.ChronoType.TIMER_TIME ) );
+        updateComponentsLanguage();
+        //timerEnablingVerifier();
+    }//GEN-LAST:event_formWindowOpened
+
+    public final void worldClockSetManager()
+    {   // If there are no custom World Clocks, the system clock is shown on big
+        if ( clocksManager.getWorldClocks().isEmpty() ) // For only System Clock
+        {   // Big Clock Panel
+            clocksManager.worldClocksFormatSetter();
+            
+            clocksManager.getSystemWorldClock().setClockLabel( bigClockPanel.getLblWorldClock() );
+            clocksManager.getSystemWorldClock().setDateLabel( bigClockPanel.getLblDate() );
+            clocksManager.getSystemWorldClock().setZoneLabel( bigClockPanel.getLblZone() );
+ 
+            if ( panelWorldClockTab.getComponent( ClocksView.SHORT_CLOCKS_GRID.ordinal() ).isVisible() )
+                panelWorldClockTab.getComponent( ClocksView.SHORT_CLOCKS_GRID.ordinal() ).setVisible( false );
+            
+            if ( !panelWorldClockTab.getComponent( ClocksView.BIG_SYSTEM_CLOCK.ordinal() ).isVisible() )
+                panelWorldClockTab.getComponent( ClocksView.BIG_SYSTEM_CLOCK.ordinal() ).setVisible( true );
+            
+            if ( !clocksManager.getSystemWorldClock().isStarted() )
+                clocksManager.getSystemWorldClock().start();
+            
+            bigClockPanel.getLblWorldClock().setText( clocksManager.getSystemWorldClock().getCurrentClockTime() );
+            
+            if ( currentClocksView != ClocksView.BIG_SYSTEM_CLOCK )
+                currentClocksView = ClocksView.BIG_SYSTEM_CLOCK;
+        } // If there are custom Worlds Clocks, all of them are shown on the grid, included the system clock
+        else // For User Custom Clocks
+        {   // System Clock Short Clock Mini Panel - Making sure if the first Mini Clock Panel is empty, if so, it adds the System Clock
+            if ( shortClocksPanelGrid.getPanelClock0().getComponentCount() == 0 )
+            {   // First is it to set the system clock in the first short panel
+                IfrmShortClock shortClock;
+                shortClock = new IfrmShortClock();
+                clocksManager.getSystemWorldClock().setClockLabel( shortClock.getLblWorldClock() );
+                clocksManager.getSystemWorldClock().setDateLabel( shortClock.getLblDate() );
+                clocksManager.getSystemWorldClock().setZoneLabel( shortClock.getLblZone() );
+                shortClocksPanelGrid.getPanelClock0().add( shortClock );
+                
+                if ( !clocksManager.getSystemWorldClock().isStarted() )
+                    clocksManager.getSystemWorldClock().start();
+            }         
+            
+            // User Custom World Clocks - Mini Clocks Grid
+            
+            clocksManager.getShortPanels().forEach( p -> { p.removeAll(); p.repaint(); } );
+            
+            for ( int i = 0; i < clocksManager.getWorldClocks().size(); i++ )
+            {   // Then I go through the World Clocks collection settings every one of them in their corresponding panels, cleaning all those panels first
+                WorldClock wc = clocksManager.getWorldClocks().get( i );
+                IfrmShortClock shortClock = new IfrmShortClock();
+                wc.setClockLabel( shortClock.getLblWorldClock() );
+                wc.setDateLabel( shortClock.getLblDate() );
+                wc.setZoneLabel( shortClock.getLblZone() );
+                clocksManager.getShortPanels().get( i ).add( shortClock );
+                
+                if ( !wc.isStarted() )
+                    wc.start();
+                
+                shortClock.getLblWorldClock().setText( wc.getCurrentClockTime() );
+            }
+     
+            if ( ( clocksManager.getWorldClocks().size() == 1 
+                    && currentClocksView != ClocksView.SHORT_CLOCKS_GRID ) 
+                    || currentClocksView == null )
+            {
+                clocksManager.worldClocksFormatSetter();
+
+                if ( panelWorldClockTab.getComponent( ClocksView.BIG_SYSTEM_CLOCK.ordinal() ).isVisible() )
+                    panelWorldClockTab.getComponent( ClocksView.BIG_SYSTEM_CLOCK.ordinal() ).setVisible( false );
+                
+                if ( !panelWorldClockTab.getComponent( ClocksView.SHORT_CLOCKS_GRID.ordinal() ).isVisible() )
+                    panelWorldClockTab.getComponent( ClocksView.SHORT_CLOCKS_GRID.ordinal() ).setVisible( true );
+             }
+            
+            if ( currentClocksView != ClocksView.SHORT_CLOCKS_GRID )
+                currentClocksView = ClocksView.SHORT_CLOCKS_GRID;
+            
+            shortClocksPanelGrid.worldClockEnablingVerifier();
+        }
+    }
+
+    private void mnuSettingsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnuSettingsActionPerformed
+    {//GEN-HEADEREND:event_mnuSettingsActionPerformed
+        DlgSettings settings = new DlgSettings( this, true );
+        settings.setVisible( true );
+    }//GEN-LAST:event_mnuSettingsActionPerformed
+
+    private void mnuChangeModeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnuChangeModeActionPerformed
+    {//GEN-HEADEREND:event_mnuChangeModeActionPerformed
+        changeModeManager();
+    }//GEN-LAST:event_mnuChangeModeActionPerformed
+
+    private void mnuCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnuCloseActionPerformed
+    {//GEN-HEADEREND:event_mnuCloseActionPerformed
+        filesManager.userSettingsSaver();
+        System.exit( 0 );
+    }//GEN-LAST:event_mnuCloseActionPerformed
+
+    private void mnuAboutActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnuAboutActionPerformed
+    {//GEN-HEADEREND:event_mnuAboutActionPerformed
+        DlgAbout aboutDialog = new DlgAbout( this, true );
+        aboutDialog.setVisible( true );
+    }//GEN-LAST:event_mnuAboutActionPerformed
+
+    private void btnTimerStartPauseResumeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnTimerStartPauseResumeActionPerformed
+    {//GEN-HEADEREND:event_btnTimerStartPauseResumeActionPerformed
+        switch ( timer.getState() )
+        {
+            case STOPPED -> 
+            {
+                timer.start();
+                btnTimerCancel.setEnabled( true );
+            }
+            case RUNNING -> timer.stop();
+            case PAUSED -> timer.start();
+        }
+        
+        timerButtonsNamesSetter();
+    }//GEN-LAST:event_btnTimerStartPauseResumeActionPerformed
+
+    private void btnTimerCancelActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnTimerCancelActionPerformed
+    {//GEN-HEADEREND:event_btnTimerCancelActionPerformed
+        timer.reset();
+        btnTimerCancel.setEnabled( false );
+        timerButtonsNamesSetter();
+    }//GEN-LAST:event_btnTimerCancelActionPerformed
+
+    private void btnStopwatchStartStopResumeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnStopwatchStartStopResumeActionPerformed
+    {//GEN-HEADEREND:event_btnStopwatchStartStopResumeActionPerformed
+        // This is in the particular case that a laps file is open but the stopwatch is stopped 
+        // and it doesn't correspond to those laps, so when start button is clicked, those laps 
+        // are removed and the laps window updated ready for the laps of the current stopwatch
+        if ( stopwatch.getState() == CommonUtils.State.STOPPED && 
+                !clocksManager.getStopwatchLaps().isEmpty() &&
+                stopwatchLapsWindow != null && stopwatchLapsWindow.isVisible() )
+        {
+            clocksManager.getStopwatchLaps().clear();
+            stopwatchLapsWindow.updateLapsTable();
+        }
+        
+        if ( stopwatch.getState() != CommonUtils.State.RUNNING )
+        {
+            stopwatch.start();
+        }
+        else
+            stopwatch.stop();
+        
+        stopwatchButtonsNamesSetter();
+        stopwatchEnablingVerifier();
+    }//GEN-LAST:event_btnStopwatchStartStopResumeActionPerformed
+
+    private void btnLapResetActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLapResetActionPerformed
+    {//GEN-HEADEREND:event_btnLapResetActionPerformed
+        if ( stopwatch.getState() == CommonUtils.State.RUNNING )
+        {   
+            if ( clocksManager.getStopwatchLaps().isEmpty() )
+            {
+                stopwatch.startLapTickerFirstTime();
+                if ( !btnCheckLaps.isEnabled() )
+                    btnCheckLaps.setEnabled( true );
+                openUpdateLapsWindow();
+            }
+            
+            clocksManager.markLap();
+            
+            if ( stopwatchLapsWindow != null && stopwatchLapsWindow.isVisible() )
+                stopwatchLapsWindow.updateLapsTable();
+        }
+        else if( stopwatch.getState() == CommonUtils.State.PAUSED ) 
+        {
+            stopwatch.reset();
+            clocksManager.getStopwatchLaps().clear();
+            
+            if ( stopwatchLapsWindow != null && stopwatchLapsWindow.isVisible() )
+                stopwatchLapsWindow.dispose();
+            
+            stopwatchButtonsNamesSetter();
+            stopwatchEnablingVerifier();
+        }
+    }//GEN-LAST:event_btnLapResetActionPerformed
+
+    private void mnuOpenActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnuOpenActionPerformed
+    {//GEN-HEADEREND:event_mnuOpenActionPerformed
+        clocksManager.openStopwatchLaps();
+        if ( !clocksManager.getStopwatchLaps().isEmpty() )
+            openUpdateLapsWindow();
+    }//GEN-LAST:event_mnuOpenActionPerformed
+
+    private void openUpdateLapsWindow()
+    {
+        if ( CtrlSettings.getAppMode() == CtrlSettings.Mode.EXPANDED )
+        {
+            if ( stopwatchLapsWindow == null )
+            {
+                stopwatchLapsWindow = new DlgStopwatchLaps( this, false );
+                stopwatchLapsWindow.setVisible( true );
+            }
+            else if ( !stopwatchLapsWindow.isVisible() )
+            {
+                stopwatchLapsWindow.setVisible( true );
+                stopwatchLapsWindow.updateLapsTable();
+            }
+            else
+            {
+                stopwatchLapsWindow.updateLapsTable();
+            }
+        }
+    }
+    
+    private void mnuAttributionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnuAttributionActionPerformed
+    {//GEN-HEADEREND:event_mnuAttributionActionPerformed
+        DlgAttribution attributionDialog = new DlgAttribution( this, true );
+        attributionDialog.setVisible( true );
+    }//GEN-LAST:event_mnuAttributionActionPerformed
+
+    private void btnSetTimeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSetTimeActionPerformed
+    {//GEN-HEADEREND:event_btnSetTimeActionPerformed
+        setTimerWindow = new DlgSetTimer( this, true, lblTimer, lblTimerName );
+        setTimerWindow.setVisible( true );
+    }//GEN-LAST:event_btnSetTimeActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
+    {//GEN-HEADEREND:event_formWindowClosing
+        filesManager.userSettingsSaver();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void btnCheckLapsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCheckLapsActionPerformed
+    {//GEN-HEADEREND:event_btnCheckLapsActionPerformed
+        if ( stopwatchLapsWindow != null && stopwatchLapsWindow.isVisible() )
+        {
+            stopwatchLapsWindow.dispose();
+        }
+        else
+        {
+            stopwatchLapsWindow = new DlgStopwatchLaps( this, false );
+            stopwatchLapsWindow.setVisible( true );
+        }
+    }//GEN-LAST:event_btnCheckLapsActionPerformed
+   
+    /** Sets the application current locale, this affects between some things the application language
+     *
+     * @see controllers.CtrlSettings
+     */
+    public void setLocaleInApp()
+    {
+        Locale.setDefault( new Locale ( CtrlSettings.getAppLanguage().getLanguage(), CtrlSettings.getAppLanguage().getCountry() ) );
+    }
+
+    /** Updates this window components language to make them match with the
+     * current language set by the user
+     */
+    public void updateComponentsLanguage()
+    {
+        mnuChangeMode.setText( CtrlSettings.getAppMode() == CtrlSettings.Mode.EXPANDED ? CtrlSettings.getLanguageBundle().getString( "key_mini_mode" ) : CtrlSettings.getLanguageBundle().getString( "key_expanded_mode" ) );
+        menuOptions.setText( CtrlSettings.getLanguageBundle().getString( "key_options" ) );
+        mnuOpen.setText( CtrlSettings.getLanguageBundle().getString( "key_open" ) );
+        mnuSettings.setText( CtrlSettings.getLanguageBundle().getString( "key_settings" ) );
+        mnuClose.setText( CtrlSettings.getLanguageBundle().getString( "key_close" ) );
+        menuHelp.setText( CtrlSettings.getLanguageBundle().getString( "key_help" ) );
+        mnuAttribution.setText( CtrlSettings.getLanguageBundle().getString( "key_attribution" ) );
+        mnuAbout.setText( CtrlSettings.getLanguageBundle().getString( "key_about" ) );
+        
+        tpMain.setTitleAt( 0, CtrlSettings.getLanguageBundle().getString( "key_world_clock" ) );
+        tpMain.setTitleAt( 1, CtrlSettings.getLanguageBundle().getString( "key_timer" ) );
+        tpMain.setTitleAt( 2, CtrlSettings.getLanguageBundle().getString( "key_stopwatch" ) );
+
+        btnTimerCancel.setText( CtrlSettings.getLanguageBundle().getString( "key_cancel" ) );
+        btnSetTime.setToolTipText( CtrlSettings.getLanguageBundle().getString( "key_set_timer" ) );
+        btnCheckLaps.setToolTipText( CtrlSettings.getLanguageBundle().getString( "key_check_laps" ) );
+        timerButtonsNamesSetter();
+        stopwatchButtonsNamesSetter();
+    }
+    
+    public void timerEnablingVerifier()
+    {
+        if ( timer.getTimeSet().isZero() )
+        {
+            if( btnTimerStartPauseResume.isEnabled() )
+                btnTimerStartPauseResume.setEnabled( false );
+            
+            if( btnTimerCancel.isEnabled() )
+                btnTimerCancel.setEnabled( false );
+        }
+        else
+        {
+            if( !btnTimerStartPauseResume.isEnabled() )
+                btnTimerStartPauseResume.setEnabled( true );
+        }
+        
+        if ( timer.getState() == CommonUtils.State.STOPPED )
+        {   
+            if( btnTimerCancel.isEnabled() )
+                btnTimerCancel.setEnabled( false );
+        }
+    }
+    
+    public void stopwatchEnablingVerifier()
+    {
+        if ( stopwatch.getState() == CommonUtils.State.STOPPED )
+        {
+            if ( !btnStopwatchStartStopResume.isEnabled() )
+                btnStopwatchStartStopResume.setEnabled( true );
+            
+            if ( btnLapReset.isEnabled() )
+                btnLapReset.setEnabled( false );
+            
+            if ( btnCheckLaps.isEnabled() )
+                btnCheckLaps.setEnabled( false );
+        }
+        else
+        {
+            if ( !btnLapReset.isEnabled() )
+                btnLapReset.setEnabled( true );
+            
+            if ( stopwatch.isLimitReached() )
+                btnStopwatchStartStopResume.setEnabled( false );
+        }
+    }
+
+    public void timerButtonsNamesSetter()
+    {
+        btnTimerStartPauseResume.setText( switch ( timer.getState() )
+        {
+            case STOPPED -> CtrlSettings.getLanguageBundle().getString( "key_start" );
+            case RUNNING -> CtrlSettings.getLanguageBundle().getString( "key_pause" );
+            case PAUSED -> CtrlSettings.getLanguageBundle().getString( "key_resume" );
+        } );
+    }
+    
+    private void stopwatchButtonsNamesSetter()
+    {
+        btnStopwatchStartStopResume.setText( switch ( stopwatch.getState() )
+        {
+            case STOPPED -> CtrlSettings.getLanguageBundle().getString( "key_start" );
+            case RUNNING -> CtrlSettings.getLanguageBundle().getString( "key_pause" );
+            case PAUSED -> CtrlSettings.getLanguageBundle().getString( "key_resume" );
+        } );
+        
+        btnLapReset.setText( stopwatch.getState() == CommonUtils.State.PAUSED ? CtrlSettings.getLanguageBundle().getString( "key_reset" ) : CtrlSettings.getLanguageBundle().getString( "key_lap" ) );
+    }
+    
+    public void changeModeManager()
+    {
+        switch ( CtrlSettings.getAppMode() )
+        {
+            case MINI_MODE -> 
+            { 
+                CtrlSettings.setAppMode( CtrlSettings.Mode.EXPANDED );
+                clocksManager.worldClocksFormatSetter();
+                
+                if ( CommonUtils.getMiniWindow().getMiniTimerPanel().getSetTimerWindow() != null )
+                    CommonUtils.getMiniWindow().getMiniTimerPanel().getSetTimerWindow().dispose();
+                
+                if ( CommonUtils.getMiniWindow().getMiniStopwatchPanel().getStopwatchLapsWindow() != null )
+                    CommonUtils.getMiniWindow().getMiniStopwatchPanel().getStopwatchLapsWindow().dispose();
+                
+                
+                if ( !this.isVisible() ) 
+                    this.setVisible( true );
+                
+                timer.setTimerLabel( lblTimer );
+                lblTimer.setText( CommonUtils.getFormattedDuration( timer.getTickingTime(), CommonUtils.ChronoType.TIMER_TIME ) );
+                stopwatch.setStopwatchLapLabel( lblStopwatch, lblLapTime );
+                lblStopwatch.setText( CommonUtils.getFormattedDuration( stopwatch.getStopwatchTime(), CommonUtils.ChronoType.STOPWATCH ) );
+                
+                if ( stopwatch.getLapTime() != Duration.ZERO )
+                    lblLapTime.setText( CommonUtils.getFormattedDuration( stopwatch.getLapTime(), CommonUtils.ChronoType.STOPWATCH ) );
+                
+                timerButtonsNamesSetter();
+                timerEnablingVerifier();
+                stopwatchButtonsNamesSetter();
+                stopwatchEnablingVerifier();
+                
+                worldClockSetManager();
+            }
+            case EXPANDED ->
+            {
+                CtrlSettings.setAppMode( CtrlSettings.Mode.MINI_MODE );
+                clocksManager.worldClocksFormatSetter();
+                
+                if ( setTimerWindow != null )
+                    setTimerWindow.dispose();
+                
+                if ( stopwatchLapsWindow != null )
+                    stopwatchLapsWindow.dispose();
+
+                selectedTabIndex = tpMain.getSelectedIndex();
+                
+                FrmMiniMode miniWindow = new FrmMiniMode();
+                miniWindow.setVisible( true );
+                
+                miniWindow.getMiniTimerPanel().timerButtonsIconsNamesSetter();
+                miniWindow.getMiniTimerPanel().timerEnablingVerifier();
+                miniWindow.getMiniStopwatchPanel().stopwatchButtonsIconsNamesSetter();
+                miniWindow.getMiniStopwatchPanel().stopwatchEnablingVerifier();
+                miniWindow.getMiniStopwatchPanel().getBtnMiniCheckLaps().setEnabled( btnCheckLaps.isEnabled() );
+                
+                this.setVisible( false );
+            }
+        }
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCheckLaps;
+    private javax.swing.JButton btnLapReset;
+    private javax.swing.JButton btnSetTime;
+    private javax.swing.JButton btnStopwatchStartStopResume;
+    private javax.swing.JButton btnTimerCancel;
+    private javax.swing.JButton btnTimerStartPauseResume;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JLabel lblLapTime;
+    private javax.swing.JLabel lblStopwatch;
+    private javax.swing.JLabel lblTimer;
+    private javax.swing.JLabel lblTimerName;
+    private javax.swing.JMenu menuHelp;
+    private javax.swing.JMenu menuOptions;
+    private javax.swing.JMenuItem mnuAbout;
+    private javax.swing.JMenuItem mnuAttribution;
+    private javax.swing.JMenuItem mnuChangeMode;
+    private javax.swing.JMenuItem mnuClose;
+    private javax.swing.JMenuItem mnuOpen;
+    private javax.swing.JMenuItem mnuSettings;
+    private javax.swing.JPanel panelStopwatchTab;
+    private javax.swing.JPanel panelTimerTab;
+    private javax.swing.JPanel panelWorldClockTab;
+    private javax.swing.JTabbedPane tpMain;
+    // End of variables declaration//GEN-END:variables
+}
