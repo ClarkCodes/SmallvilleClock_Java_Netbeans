@@ -130,10 +130,15 @@ con Gradle, dale click en resolver y espera a que se realice la compilación y d
 * Si todo salió bien ya podrás ejecutar el proyecto, revisar su código y modificarlo si quieres.
 
 ## ¿Cómo contribuír?
-Si deseas contribuír al proyecto, puedes apuntar a resolver un bug, el cual debe tener una issue abierta marcada con la etiqueta de bug, por lo que revisar la 
-sección de issues es un buen punto de partida, o por otro lado, puedes proponer una nueva feature, para ello primero abre una nueva issue y asegúrate de marcarla 
-con la etiqueta de Enhancement o Mejora, y dentro de esta describe detalladamente la feature, qué necesidad o problema soluciona esta y por qué seria una buena idea 
-el incorporarla en el proyecto. 
+Si deseas contribuír con aportaciones de código al proyecto: 
+* Haz un [FORK](https://github.com/clarkcodes/SmallvilleClock_Java_Netbeans/fork) del proyecto y trabaja con Git para ir sincronizando las actualizaciones. 
+* Una vez hallas realizado el fork y lo tengas en tu perfil de GitHub, clónalo a tu máquina local.
+* Puedes apuntar a resolver un bug, el cual debe tener una issue abierta marcada con la etiqueta de bug, por lo que revisar la sección de issues es un buen punto de partida. Las soluciones a bugs se pueden desarrollar sin apobación previa.
+* Por otro lado, también puedes proponer una nueva feature, para ello primero abre una nueva issue y asegúrate de marcarla con la etiqueta de 'Enhancement' o 'Mejora', y dentro de esta describe detalladamente la feature, qué necesidad o problema soluciona esta y por qué seria una buena idea incorporarla al proyecto.
+* Esta Enhancement issue debe ser revisada y una vez se evalue que es viable, oportuna y adecuada para el proyecto, será aprobada mediante un mensaje de aprobación en la issue o un medio equivalente, y esta permanecerá abierta hasta que se provea una Pull Request que apunte a su implementación. Una vez la Feature sea aprobada en la Enhancement issue, se puede empezar a desarrollarla, es importante que se espere a que exista esta aprobación para no dedicar tiempo en vano si la feature no es aprobada, de suceder este segundo escenario, se explicará en la issue el por qué no fué aprobada, fundamentando la razón de manera lógica y posterior a ello esta será cerrada.
+* Una vez que consideres que has culminado el desarrollo que hallas elegido, realizado pruebas y verificado que todo funciona bien, haz el commit en local, al momento de hacer commit, sigue los siguientes [Lineamientos para escribir Mensajes en Commits](https://gist.github.com/robertpainsi/b632364184e70900af4ab688decf6f53).
+* Ejecuta un 'git push' desde tu rama develop en local a la rama 'develop' en remoto de tu proyecto SmallvilleClock_Java_Netbeans forked en tu perfil, con esto ya tendrias tu proyecto forked actualizado con los cambios que has realizado, ahora hay que llevarlos al repositorio de ClarkCodes.
+* Para ello, habiendo hecho esto, dirígete a este proyecto en [ClarkCodes/SmallvilleClock_Java_Netbeans](https://github.com/ClarkCodes/SmallvilleClock_Java_Netbeans) en el perfil de ClarkCodes, luego dirígete a la rama 'develop'(paso importante) y allí haz una Pull Request: Contribuír -> Crear Pull Request. Para los títulos y mensajes de las Pull Requests sigue los mismos lineamientos que para los commits. Con esto ya habrias creado la Pull Request, la cual tiene que ser revisada y posteriormente decidirse si se aceptan tus cambios y se incorporan en el proyecto o no, lo cual ya será decisión del administrador del proyecto y el repositorio.
 
 ### Ten en cuenta los siguientes aspectos:
 * Para Contribuciones solamente se aceptará cambios de código en archivos de Java y/o archivos que tengan que ver con Apache NetBeans IDE 17 o archivos de recursos, 
@@ -143,6 +148,7 @@ estable una vez que esta sea publicada, aunque mientras dure la versión onDevAl
 * Siempre solicita cambios mediante Pull Request, no realices commits forzados tipo 'git push --force' directamente contra ninguna rama, unicamente realiza 
 Pull Requests sobre la rama develop, todas las Pull Requests deben ser revisadas previamente antes de realizar un posible merge sobre la rama develop si no se halla 
 ningún problema, conflicto ni inconveniente.
+* Aunque puede darse que en algún momento alguna Pull Request pueda no ser aceptada o solicitar cambios en esta, debido a que en primera instancia se debe priorizar la consistencia, coherencia e integridad del proyecto, por el bien y la salud de este, más allá de ello, por supuesto que toda contribución es bienvenida y agradecida, dado que se entiende que no se está obligado a ello y esta viene desde el espíritu de colaboración conjunta como comunidad Open Source de desarrolladores, por y para mejores piezas y productos de software, para el uso de todos al fin y al cabo, muchas gracias fraternales por ello.
 
 ###
 ## ![ClarkCodes Logo OnTransparent_100x100px_300ppi](https://user-images.githubusercontent.com/39943822/235443512-3ab382e8-888e-4d2d-87ba-1c8f4ef3ec45.png) Hey what's up man!, soy Clark, el creador de Smallville Clock.
@@ -155,8 +161,7 @@ Soy un Desarrollador de Software autodidacta, actualmente estudiante de estudios
 Muchas gracias por revisar este proyecto, me gustó mucho hacerlo, y aunque todavía le faltan algunos toques y unos cuantos detalles, ha sido bastante cool
 hasta ahora, aprendí mucho y pude mejorar en muchas cosas, y la idea es que tu lo puedas usar también y que lo disfrutes, ojala te sea de utilidad y te sirva, 
 al fin y al cabo, esa es la idea, así que nos estamos viendo por aquí próximamente con más proyectos, por YouTube con más videos y en las demás redes sociales, 
-un abrazo, y... Happy Coding! :D .
+un abrazo, y... Happy Coding! :D
 
 Clark.
-
 
