@@ -4,8 +4,10 @@ plugins { // Apply the application plugin to add support for building a CLI appl
     id 'application'
 }
 
+applicationName = 'SmallvilleClock'
 description = 'Simple Useful Clock'
 version = 'onDevAlpha'
+status = 'onDevelopment'
 targetCompatibility = 17
 
 repositories { // Use Maven Central for resolving dependencies.
@@ -24,7 +26,7 @@ dependencies { // Use JUnit Jupiter for testing.
 }
 
 javadoc {
-  title = 'SmallvilleClock ' + version
+  title = applicationName + ' ' + version
 }
 
 application { // Define the main class for the application.
