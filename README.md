@@ -8,9 +8,13 @@ Simple Useful Clock, una aplicación utilitaria con Reloj Mundial, Temporizador 
 Ten en cuenta la hora actual en varios países con el Reloj Mundial, establece tiempos de terminación de alguna tarea con slots de presets disponibles, estableciendo tus propios sonidos o canciones como sonido de aviso, usando el Temporizador, mide tiempos de completado entre diferentes tareas o competidores  de alguna carrera y guardalos en un archivo para poder revisarlos después con el Cronómetro, activa el modo mini para no ocupar mucho espacio en pantalla, Smallville Clock estará para ti siempre que lo necesites, para los tiempos que requieras... Smallville Clock, siempre a tiempo.
 
 ### Tecnologías utilizadas
-[![Java](https://img.shields.io/badge/Java-OpenJDK_17.0.2-orange.svg?longCache=true&style=flat)](https://jdk.java.net/archive/)
-[![Gradle](https://img.shields.io/badge/Gradle-8.1-lightgrey.svg?longCache=true&style=flat)](https://docs.gradle.org/8.1/release-notes.html)
-[![Apache NetBeans](https://img.shields.io/badge/Apache_NetBeans-17-green.svg?longCache=true&style=flat)](https://netbeans.apache.org/download/nb17/)
+[![Java](https://img.shields.io/badge/Java-OpenJDK_17.0.2-f89820.svg?longCache=true&style=flat)](https://jdk.java.net/archive/)
+
+[![FlatLaf](https://img.shields.io/badge/FlatLaf-3.1.1-007ec6.svg?longCache=true&style=flat-square)](https://www.formdev.com/flatlaf/)
+
+[![Gradle](https://img.shields.io/badge/Gradle-8.1-02303a.svg?longCache=true&style=flat&logo=gradle)](https://docs.gradle.org/8.1/release-notes.html)
+
+[![Apache NetBeans](https://img.shields.io/badge/Apache_NetBeans-17-a1c535.svg?longCache=true&style=flat&logo=apachenetbeanside)](https://netbeans.apache.org/download/nb17/)
 
 ### Estado del Proyecto
 Esta aplicación se encuentra es fase Alpha, todavía en desarrollo, no está completamente terminada, puede considerarse un MVP(Minimum Viable Product), está sujeta a ajustes y cambios cualesquiera estos sean hasta la publicación de su versión estable oficial 1.0, sin embargo el concepto y la idea original estan bastante realizados.
