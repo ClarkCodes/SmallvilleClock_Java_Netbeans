@@ -7,7 +7,7 @@ Simple Useful Clock, una aplicación utilitaria con Reloj Mundial, Temporizador 
 
 Ten en cuenta la hora actual en varios países con el Reloj Mundial, establece tiempos de terminación de alguna tarea con slots de presets disponibles, estableciendo tus propios sonidos o canciones como sonido de aviso, usando el Temporizador, mide tiempos de completado entre diferentes tareas o competidores  de alguna carrera y guardalos en un archivo para poder revisarlos después con el Cronómetro, activa el modo mini para no ocupar mucho espacio en pantalla, Smallville Clock estará para ti siempre que lo necesites, para los tiempos que requieras... Smallville Clock, siempre a tiempo.
 
-### Tecnologías utilizadas
+## Tecnologías utilizadas
 <div style="display: inline-block" >
   <img align="center" alt="Cks-Java" height="100" width="136" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg">
 </div>
@@ -22,10 +22,10 @@ Ten en cuenta la hora actual en varios países con el Reloj Mundial, establece t
 
 [![Apache NetBeans](https://img.shields.io/badge/Apache_NetBeans-17-a1c535.svg?longCache=true&style=flat&logo=apachenetbeanside)](https://netbeans.apache.org/download/nb17/)
 
-### Estado del Proyecto
+## Estado del Proyecto
 Esta aplicación se encuentra es fase Alpha, todavía en desarrollo, no está completamente terminada, puede considerarse un MVP(Minimum Viable Product), está sujeta a ajustes y cambios cualesquiera estos sean hasta la publicación de su versión estable oficial 1.0, sin embargo el concepto y la idea original estan bastante realizados.
 
-### ¿Qué puedes hacer con Smallville Clock?
+## ¿Qué puedes hacer con Smallville Clock?
 Smallville Clock es una aplicación simple, pero útil, que te puede ayudar en tus tareas cotidianas.
 Esta versión de Smallville Clock está destinada a PCs, dado que está desarollado con Java Swing, aunque es posibles que en el futuro aparezca para otras plataformas 
 en forma de proyectos paralelos. Esta app está pensada para cualquier uso práctico del día a día, en lo que sea que la quieras usar, nace de la necesidad de tener 
@@ -129,7 +129,7 @@ variaciones de colores y estilos.
   <img src="https://user-images.githubusercontent.com/39943822/235455047-bffd49f1-1254-4d43-8e49-457dd3fd6e20.png"/>
 </p>
 
-### ¿Cómo puedes utilizar o abrir el proyecto de Smallville Clock?
+## ¿Cómo puedes utilizar o abrir el proyecto de Smallville Clock?
 * Clona el Repositorio en local, selecciona la opción de "Abrir con GitHub Desktop" o Descargalo como ZIP desde el botón Código -> Local, ubicado en el repositorio.
 * Ten en cuenta que la aplicación está desarrollada con Apache NetBeans IDE 17, por lo que se recomienda el uso de este IDE, debes tenerlo instalado en tu equipo para poder abrir el proyecto con él, aunque la opción de importarlo/abrirlo con otros IDEs como IntelliJ Idea es posible, no se recomienda por falta de compatibilidad e interoperabilidad del uno con el otro, así como de diferencia de ciertos formatos para el manejo de archivos de la interfáz gráfica, etc, al igual que posiblemente con otros IDEs, sin embargo esto queda enteramente a tu responsabilidad y cargo, si quieres abrirlo con otro IDE y consigues que funcione con él, ¡espectacular!.
 * Una vez que hallas realizado el paso anterior probablemente ya podrás abrir el proyecto, abre Apache NetBeans IDE 17 (o el IDE que hallas decidido usar), selecciona la opción de abrir proyecto en el menú archivo(si usas otro IDE puede que tengas que realizar un procedimiento para importar o convertir el proyecto primero para que pueda funcionar con ese IDE, proceso del cual debes conocer o documentarte, ya que está fuera del contenido de esta guía), dirígete a la carpeta del proyecto y dale click a abrir.
@@ -148,7 +148,7 @@ Si deseas contribuír con aportaciones de código al proyecto:
 * Ejecuta un 'git push' desde tu rama develop en local a la rama 'develop' en remoto de tu proyecto SmallvilleClock_Java_Netbeans forked en tu perfil, con esto ya tendrias tu proyecto forked actualizado con los cambios que has realizado, ahora hay que llevarlos al repositorio de ClarkCodes.
 * Para ello, en tu proyecto forked, en la parte superior derecha, da click en Contribuír -> Crear Pull Request. Para los títulos y mensajes de las Pull Requests sigue los mismos lineamientos que para los commits, no olvides mencionar a que issue apunta la contribución, ya sea una issue de 'Fix Bug', de mejora  o 'Refactoring', nueva 'Feature' o 'Enhancement'. Con esto ya habrias creado la Pull Request, la cual tiene que ser revisada y posteriormente decidirse si se aceptan tus cambios y se los incorporan en el proyecto principal o no, lo cual ya será decisión del administrador del proyecto y/o mantenedor del repositorio.
 
-### Ten en cuenta los siguientes aspectos:
+## Ten en cuenta los siguientes aspectos:
 * Para Contribuciones solamente se aceptaran cambios de código en archivos de Java y/o archivos que tengan que ver con Apache NetBeans o archivos de recursos, no se aceptarán Pull Requests que contengan archivos referentes a otros IDEs de desarrollo y que no sean archivos de Java ni de recursos.
 * Usa solamente la rama "develop", la cual es la que se utilizará en el desarrollo activo de la aplicación, la rama main será unicamente la rama de producción destinada a la versión estable una vez que esta sea publicada, aunque mientras dure la versión onDevAlpha actual, la rama main será lo más cercano a este concepto dentro de lo que cabe.
 * Los cambios siempre deben tener un propósito claro y una razón de ser, ya sea apuntando a la correxión de un bug, la implementación de una nueva feature, o la refactorización de alguna parte por motivos de eficiencia o simplificación de código.
@@ -157,11 +157,24 @@ Si deseas contribuír con aportaciones de código al proyecto:
 * Aunque puede darse que en algún momento alguna Pull Request pueda no ser aceptada o solicitar cambios en esta, debido a que en primera instancia se debe priorizar la consistencia, coherencia e integridad del proyecto, por el bien y la salud de este, más allá de ello, por supuesto que toda contribución es bienvenida y agradecida, dado que se entiende que no se está obligado a ello y esta viene desde el espíritu de colaboración conjunta como comunidad Open Source de desarrolladores, por y para mejores piezas y productos de software, para el uso de todos al fin y al cabo, muchas gracias fraternales por ello.
 
 ## ![ClarkCodes Logo OnTransparent_100x100px_300ppi](https://user-images.githubusercontent.com/39943822/235443512-3ab382e8-888e-4d2d-87ba-1c8f4ef3ec45.png) Hey what's up man!, soy Clark, el creador de Smallville Clock.
-[![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/:@clarkcodes?style=social)](https://youtube.com/@ClarkCodes?sub_confirmation=1)
 [![Twitter Follow](https://img.shields.io/twitter/follow/ClarkCodes?style=social)](https://twitter.com/clarkcodes)
 [![GitHub Followers](https://img.shields.io/github/followers/ClarkCodes?style=social)](https://github.com/ClarkCodes)
 
 Soy un Desarrollador de Software autodidacta, actualmente estudiante de estudios universitarios de grado superior en Ingeniería de Software, apasionado por la programación y la tecnología.
+
+### Como contactarme
+- 📫 Puedes enviarme un email a clark.codes.sk@gmail.com e intentaré responder lo más pronto posible que pueda, también puedes seguirme en mis redes sociales y ver mi contenido.
+
+  ##
+ 
+<div> 
+  <a href="https://www.youtube.com/@ClarkCodes?sub_confirmation=1" target="_blank"><img src="https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white" target="_blank"></a>
+  <a href="https://instagram.com/ClarkCodes" target="_blank"><img src="https://img.shields.io/badge/-Instagram-%23E4405F?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a> 
+  <a href = "mailto:clark.codes.sk@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+  
+</div>
+
+## Gracias por visitar
 
 Muchas gracias por revisar este proyecto, me gustó mucho hacerlo, y aunque todavía le faltan algunos toques y unos cuantos detalles, ha sido bastante cool
 hasta ahora, aprendí mucho y pude mejorar en muchas cosas, y la idea es que tu lo puedas usar también y que lo disfrutes, ojala te sea de utilidad y te sirva, 
