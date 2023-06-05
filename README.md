@@ -8,11 +8,17 @@ Simple Useful Clock, una aplicación utilitaria con Reloj Mundial, Temporizador 
 Ten en cuenta la hora actual en varios países con el Reloj Mundial, establece tiempos de terminación de alguna tarea con slots de presets disponibles, estableciendo tus propios sonidos o canciones como sonido de aviso, usando el Temporizador, mide tiempos de completado entre diferentes tareas o competidores  de alguna carrera y guardalos en un archivo para poder revisarlos después con el Cronómetro, activa el modo mini para no ocupar mucho espacio en pantalla, Smallville Clock estará para ti siempre que lo necesites, para los tiempos que requieras... Smallville Clock, siempre a tiempo.
 
 ### Tecnologías utilizadas
+<div style="display: inline-block" >
+  <img align="center" alt="Cks-Java" height="100" width="136" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg">
+</div>
+
+<br>
+
 [![Java](https://img.shields.io/badge/Java-OpenJDK_17.0.2-f89820.svg?longCache=true&style=flat)](https://jdk.java.net/archive/)
 
-[![FlatLaf](https://img.shields.io/badge/FlatLaf-3.1.1-007ec6.svg?longCache=true&style=flat-square)](https://www.formdev.com/flatlaf/)
-
 [![Gradle](https://img.shields.io/badge/Gradle-8.1-02303a.svg?longCache=true&style=flat&logo=gradle)](https://docs.gradle.org/8.1/release-notes.html)
+
+[![FlatLaf](https://img.shields.io/badge/FlatLaf-3.1.1-007ec6.svg?longCache=true&style=flat-square)](https://www.formdev.com/flatlaf/)
 
 [![Apache NetBeans](https://img.shields.io/badge/Apache_NetBeans-17-a1c535.svg?longCache=true&style=flat&logo=apachenetbeanside)](https://netbeans.apache.org/download/nb17/)
 
