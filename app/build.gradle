@@ -8,7 +8,7 @@ applicationName = 'SmallvilleClock'
 description = 'Simple Useful Clock'
 version = 'onDevAlpha'
 status = 'onDevelopment'
-targetCompatibility = 17
+targetCompatibility = 21
 
 repositories { // Use Maven Central for resolving dependencies.
     mavenCentral()
