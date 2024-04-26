@@ -14,9 +14,9 @@ Ten en cuenta la hora actual en varios países con el Reloj Mundial, establece t
 
 <br>
 
-[![Java](https://img.shields.io/badge/Java-OpenJDK_17.0.2-f89820.svg?longCache=true&style=flat)](https://jdk.java.net/archive/)
+[![Java](https://img.shields.io/badge/Java-OpenJDK_21.0.1-f89820.svg?longCache=true&style=flat)](https://jdk.java.net/archive/)
 
-[![Gradle](https://img.shields.io/badge/Gradle-8.1-02303a.svg?longCache=true&style=flat&logo=gradle)](https://docs.gradle.org/8.1/release-notes.html)
+[![Gradle](https://img.shields.io/badge/Gradle-8.7-02303a.svg?longCache=true&style=flat&logo=gradle)](https://docs.gradle.org/current/release-notes.html)
 
 [![FlatLaf](https://img.shields.io/badge/FlatLaf-3.1.1-007ec6.svg?longCache=true&style=flat-square)](https://www.formdev.com/flatlaf/)
 
@@ -130,10 +130,11 @@ variaciones de colores y estilos.
 </p>
 
 ## ¿Cómo puedes utilizar o abrir el proyecto de Smallville Clock?
-* Clona el Repositorio en local, selecciona la opción de "Abrir con GitHub Desktop" o Descargalo como ZIP desde el botón Código -> Local, ubicado en el repositorio.
-* Ten en cuenta que la aplicación está desarrollada con Apache NetBeans IDE 17, por lo que se recomienda el uso de este IDE, debes tenerlo instalado en tu equipo para poder abrir el proyecto con él, aunque la opción de importarlo/abrirlo con otros IDEs como IntelliJ Idea es posible, no se recomienda por falta de compatibilidad e interoperabilidad del uno con el otro, así como de diferencia de ciertos formatos para el manejo de archivos de la interfáz gráfica, etc, al igual que posiblemente con otros IDEs, sin embargo esto queda enteramente a tu responsabilidad y cargo, si quieres abrirlo con otro IDE y consigues que funcione con él, ¡espectacular!.
-* Una vez que hallas realizado el paso anterior probablemente ya podrás abrir el proyecto, abre Apache NetBeans IDE 17 (o el IDE que hallas decidido usar), selecciona la opción de abrir proyecto en el menú archivo(si usas otro IDE puede que tengas que realizar un procedimiento para importar o convertir el proyecto primero para que pueda funcionar con ese IDE, proceso del cual debes conocer o documentarte, ya que está fuera del contenido de esta guía), dirígete a la carpeta del proyecto y dale click a abrir.
-* Configura NetBeans para usar Gradle 8.1 si el IDE no lo hace automaticamente con el proyecto.
+* Clona el Repositorio en local, selecciona la opción de "Abrir con GitHub Desktop" o utiliza la opción de Clonar en tu IDE favorito, usando la url en el botón de Código localizado en este repositorio de GitHub, también puedes descargarlo como ZIP quieres.
+* Ten en cuenta que la aplicación está desarrollada con Apache NetBeans IDE 17, por lo que se recomienda el uso de este IDE(o una versión superior), debes tenerlo instalado en tu equipo para poder abrir el proyecto con él, aunque la opción de importarlo/abrirlo con otros IDEs como IntelliJ Idea es posible, no se recomienda por falta de compatibilidad e interoperabilidad del uno con el otro, así como de diferencia de ciertos formatos para el manejo de archivos de la interfáz gráfica, etc, al igual que posiblemente con otros IDEs, sin embargo esto queda enteramente a tu responsabilidad y cargo, si quieres abrirlo con otro IDE y consigues que funcione con él, ¡espectacular!.
+* Una vez que hallas realizado el paso anterior probablemente ya podrás abrir el proyecto, puede que te pida realizar la primera build con Gradle, así que dejalo hacerlo, da click en resolver y espera a que la compilación termine, da click en aceptar cuando haya terminado.
+* Debes tener Java 21.0.1 en tu PC o configurar el proyecto para que funcione con otra versión si así lo deseas, de ser posible.
+* Configura NetBeans para usar Gradle 8.7 si acaso el IDE no lo hace automaticamente con el proyecto, aunque no suele ser necesario.
 * Cuando el proyecto se abra es posible que te indique que hay conflictos que resolver, esto usualmente se debe a que se tiene que realizar una compilación inicial con Gradle, dale click en resolver y espera a que se realice la compilación y dale click en aceptar cuando termine.
 * Si todo salió bien ya podrás ejecutar el proyecto, revisar su código y modificarlo si quieres, para que se ajuste a tus necesidades específicas o gustos particulares.
 
@@ -144,7 +145,7 @@ Si deseas contribuír con aportaciones de código al proyecto:
 * Puedes apuntar a resolver un bug, el cual debe tener una issue abierta marcada con la etiqueta de 'Fix Bug', por lo que revisar la sección de issues es un buen punto de partida. Las soluciones a bugs se pueden desarrollar sin apobación previa, siempre y cuando estas en efecto, solucionen el bug.
 * Por otro lado, también puedes proponer una nueva feature, para ello primero abre una nueva issue, dentro de esta indica que se trata de una Feature y describela detalladamente, qué necesidad o problema soluciona esta y por qué seria una buena idea incorporarla al proyecto.
 * Esta issue debe ser revisada y una vez se evalúe que es viable, oportuna y adecuada para el proyecto, será aprobada mediante un mensaje de aprobación en la issue o un medio equivalente, luego será etiquetada como 'Fix Bug','Refactoring', 'Enhancement' o 'Feature' y esta permanecerá abierta hasta que se provea una Pull Request que apunte a su solución o implementación. Si se trata de una issue de tipo Feature, una vez la Feature sea aprobada, se puede empezar a desarrollarla, es importante que se espere a que exista esta aprobación para no dedicar tiempo en vano si la feature no es aprobada, de suceder este segundo escenario, se explicará en la issue el por qué no fué aprobada, fundamentando la razón de manera lógica y posterior a ello esta será cerrada.
-* Una vez que consideres que has culminado el desarrollo que hallas elegido, realizado pruebas y verificado que todo funciona bien, haz el commit en local, al momento de hacer commit, sigue los siguientes [Lineamientos para escribir Mensajes en Commits](https://gist.github.com/robertpainsi/b632364184e70900af4ab688decf6f53).
+* Una vez que consideres que has culminado de aportar los cambios al código, luego que hayas realizado pruebas y verificado que todo funciona bien, haz el commit en local, al momento de hacer commit, sigue los siguientes [Lineamientos para escribir Mensajes en Commits](https://gist.github.com/robertpainsi/b632364184e70900af4ab688decf6f53).
 * Ejecuta un 'git push' desde tu rama develop en local a la rama 'develop' en remoto de tu proyecto SmallvilleClock_Java_Netbeans forked en tu perfil, con esto ya tendrias tu proyecto forked actualizado con los cambios que has realizado, ahora hay que llevarlos al repositorio de ClarkCodes.
 * Para ello, en tu proyecto forked, en la parte superior derecha, da click en Contribuír -> Crear Pull Request. Para los títulos y mensajes de las Pull Requests sigue los mismos lineamientos que para los commits, no olvides mencionar a que issue apunta la contribución, ya sea una issue de 'Fix Bug', de mejora  o 'Refactoring', nueva 'Feature' o 'Enhancement'. Con esto ya habrias creado la Pull Request, la cual tiene que ser revisada y posteriormente decidirse si se aceptan tus cambios y se los incorporan en el proyecto principal o no, lo cual ya será decisión del administrador del proyecto y/o mantenedor del repositorio.
 
